@@ -1,0 +1,149 @@
+/* Variables globales de colores (incluir en `index.css` o `theme.css`) */
+:root {
+    --primary-green: #4CAF50; /* Verde principal */
+    --secondary-green: #81C784; /* Verde claro */
+    --background-green: #E8F5E9; /* Fondo verde claro */
+    --text-green: #2E7D32; /* Verde oscuro para texto */
+    --white: #FFFFFF; /* Blanco */
+    --gray-light: #f5f5f5; /* Gris claro */
+}
+
+/* Contenedor principal del Header */
+.header {
+    background-color: var(--primary-green); /* Fondo verde principal */
+    padding: 1rem; /* Espaciado interno */
+    color: var(--white); /* Texto blanco */
+}
+
+/* Estructura del Header */
+.header-container {
+    display: flex; /* Elementos en línea */
+    justify-content: space-between; /* Espacio entre logo, búsqueda y botones */
+    align-items: center; /* Centrado vertical */
+    max-width: 1200px; /* Ancho máximo del Header */
+    margin: 0 auto; /* Centrado horizontal */
+    flex-wrap: wrap; /* Permite que los elementos se ajusten en pantallas pequeñas */
+}
+
+/* Logo */
+.logo {
+    display: flex;
+    align-items: center;
+}
+
+.logo-image {
+    width: 40px; /* Tamaño del logo */
+    height: 40px;
+    cursor: pointer; /* Indica que es un enlace */
+}
+
+/* Barra de búsqueda */
+.search-bar {
+    display: flex;
+    flex: 1; /* Ocupa el espacio entre el logo y los botones */
+    margin: 0 1.5rem; /* Espaciado lateral */
+    align-items: center;
+    max-width: 500px; /* Ancho máximo para pantallas grandes */
+}
+
+.search-input {
+    flex: 1; /* Ocupa todo el ancho disponible */
+    padding: 0.5rem 9rem; /* Espaciado interno */
+    border: 2px solid var(--secondary-green); /* Borde verde claro */
+    border-radius: 5px 0 0 5px; /* Bordes redondeados a la izquierda */
+    outline: none; /* Sin contorno al enfocar */
+    font-size: 1rem;
+}
+
+.search-button {
+    padding: 0.5rem 1rem; /* Espaciado del botón */
+    background-color: var(--secondary-green); /* Fondo verde claro */
+    border: none;
+    color: var(--white); /* Texto blanco */
+    font-size: 1rem;
+    border-radius: 0 5px 5px 0; /* Bordes redondeados a la derecha */
+    cursor: pointer;
+    transition: background-color 0.3s; /* Transición suave al hover */
+}
+
+.search-button:hover {
+    background-color: var(--primary-green); /* Verde más oscuro */
+}
+
+/* Navegación */
+.nav {
+    margin-left: 2rem; /* Espaciado con el logo */
+}
+
+.nav-list {
+    display: flex;
+    gap: 1.5rem; /* Espaciado entre los enlaces */
+    list-style: none; /* Sin viñetas */
+    margin: 0;
+    padding: 0;
+}
+
+.nav-list a {
+    text-decoration: none; /* Sin subrayado */
+    color: var(--white); /* Texto blanco */
+    font-size: 1rem;
+    transition: color 0.3s; /* Transición suave al hover */
+}
+
+.nav-list a:hover {
+    color: var(--secondary-green); /* Verde claro */
+}
+
+/* Botones de usuario */
+.user-actions {
+    display: flex;
+    gap: 1rem; /* Espaciado entre los botones */
+}
+
+.btn {
+    padding: 0.5rem 1rem; /* Tamaño del botón */
+    border: none; /* Sin borde */
+    background-color: var(--white); /* Fondo blanco */
+    color: var(--primary-green); /* Texto verde */
+    font-size: 1rem;
+    border-radius: 5px; /* Bordes redondeados */
+    cursor: pointer; /* Cursor de mano */
+    transition: background-color 0.3s; /* Transición suave al hover */
+}
+
+.btn:hover {
+    background-color: var(--secondary-green); /* Fondo verde claro */
+    color: var(--white); /* Texto blanco */
+}
+
+.cart-btn {
+    background-color: var(--secondary-green); /* Fondo verde claro */
+    color: var(--white); /* Texto blanco */
+}
+
+.cart-btn:hover {
+    background-color: var(--primary-green); /* Verde más oscuro */
+}
+
+/* Responsive para pantallas pequeñas */
+@media (max-width: 768px) {
+    .header-container {
+        flex-direction: column; /* Elementos en columnas */
+        align-items: center; /* Centrado horizontal */
+    }
+
+    .search-bar {
+        margin: 1rem 0; /* Espaciado vertical */
+        width: 100%; /* Ocupa todo el ancho */
+    }
+
+    .nav-list {
+        flex-direction: column; /* Cambia los enlaces a una lista vertical */
+        gap: 1rem; /* Aumenta el espaciado */
+    }
+
+    .user-actions {
+        flex-direction: column; /* Botones en columna */
+        gap: 0.5rem; /* Menor espaciado */
+    }
+}

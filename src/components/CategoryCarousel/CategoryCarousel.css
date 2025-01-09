@@ -1,0 +1,129 @@
+/* Contenedor principal del carrusel de categorías */
+.category-carousel {
+    display: flex; /* Configura un contenedor flex para alinear elementos */
+    align-items: center; /* Alinea verticalmente los elementos en el centro */
+    justify-content: center; /* Centra los elementos horizontalmente */
+    position: relative; /* Establece una posición relativa para manejar elementos absolutos como botones */
+    margin-bottom: 2rem; /* Espaciado inferior entre secciones */
+    padding: 0 2rem; /* Espaciado interno lateral para evitar cortes */
+    max-width: 1200px; /* Limita el ancho máximo del carrusel */
+    margin: 0 auto; /* Centra horizontalmente el carrusel en la página */
+}
+
+/* Lista de categorías dentro del carrusel */
+.category-list {
+    display: flex; /* Configura un contenedor flex para las categorías */
+    justify-content: center; /* Centra las categorías horizontalmente */
+    gap: 1rem; /* Espaciado entre las categorías */
+    overflow: hidden; /* Oculta las categorías fuera del área visible */
+    width: 100%; /* Ocupa todo el ancho disponible */
+    transition: transform 0.5s ease-in-out; /* Animación suave al mover la lista */
+    position: relative; /* Relativo para manejar elementos dentro de esta lista */
+}
+
+/* Elemento individual de categoría */
+.category-item {
+    text-align: center; /* Centra el texto de la categoría */
+    width: 100px; /* Define un ancho fijo para cada categoría */
+    flex-shrink: 0; /* Evita que las categorías se reduzcan al ajustar la ventana */
+}
+
+/* Imagen de cada categoría */
+.category-image {
+    width: 80px; /* Ancho de la imagen de categoría */
+    height: 80px; /* Alto de la imagen de categoría */
+    border-radius: 50%; /* Hace la imagen circular */
+    object-fit: cover; /* Ajusta la imagen para que cubra sin distorsión */
+    border: 2px solid var(--secondary-green); /* Borde con color verde claro */
+    transition: transform 0.3s, border-color 0.3s; /* Transición suave para escala y borde */
+}
+
+/* Efecto al pasar el cursor sobre la imagen de categoría */
+.category-image:hover {
+    transform: scale(1.1); /* Aumenta ligeramente el tamaño de la imagen */
+    border-color: var(--primary-green); /* Cambia el color del borde al verde principal */
+}
+
+/* Texto del nombre de la categoría */
+.category-name {
+    margin-top: 0.5rem; /* Espaciado superior respecto a la imagen */
+    font-size: 0.9rem; /* Tamaño de la fuente del nombre */
+    color: var(--text-green); /* Color del texto en verde oscuro */
+}
+
+/* Estilo de los botones de navegación */
+.nav-button {
+    background-color: var(--primary-green); /* Fondo verde principal */
+    color: white; /* Color del icono o texto del botón */
+    border: none; /* Sin borde adicional */
+    width: 50px; /* Ancho fijo para mantener forma circular */
+    height: 50px; /* Alto fijo para mantener forma circular */
+    border-radius: 50%; /* Hace el botón perfectamente circular */
+    cursor: pointer; /* Cambia el cursor a mano al pasar sobre el botón */
+    display: flex; /* Usa flexbox para centrar contenido */
+    align-items: center; /* Centra verticalmente el contenido */
+    justify-content: center; /* Centra horizontalmente el contenido */
+    transition: background-color 0.3s, transform 0.3s; /* Suaviza los cambios de fondo y escala */
+    position: absolute; /* Posiciona el botón en relación al carrusel */
+    top: 50%; /* Centra verticalmente el botón en el carrusel */
+    transform: translateY(-50%); /* Ajusta el botón para que quede exactamente centrado */
+    z-index: 2; /* Asegura que el botón esté encima de otros elementos */
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2); /* Agrega una sombra suave al botón */
+}
+
+/* Botón de navegación izquierda */
+.nav-button.prev {
+    left: -2rem; /* Posiciona el botón a la izquierda del carrusel */
+}
+
+/* Botón de navegación derecha */
+.nav-button.next {
+    right: -2rem; /* Posiciona el botón a la derecha del carrusel */
+}
+
+/* Efecto al pasar el cursor sobre los botones */
+.nav-button:hover {
+    background-color: var(--secondary-green); /* Cambia el color del fondo al verde claro */
+    transform: scale(1.1); /* Aumenta ligeramente el tamaño del botón */
+}
+
+
+/* Responsividad para pantallas medianas */
+@media (max-width: 768px) {
+    .category-item {
+        width: 80px; /* Reduce el ancho de las categorías */
+    }
+
+    .nav-button {
+        width: 40px; /* Reduce el ancho del botón */
+        height: 40px; /* Reduce el alto del botón */
+    }
+
+    .nav-button.prev {
+        left: -1rem; /* Ajusta la posición del botón izquierdo */
+    }
+
+    .nav-button.next {
+        right: -1rem; /* Ajusta la posición del botón derecho */
+    }
+}
+
+/* Responsividad para pantallas pequeñas */
+@media (max-width: 480px) {
+    .category-item {
+        width: 60px; /* Reduce aún más el ancho de las categorías */
+    }
+
+    .nav-button {
+        width: 35px; /* Reduce el ancho del botón */
+        height: 35px; /* Reduce el alto del botón */
+    }
+
+    .nav-button.prev {
+        left: -0.5rem; /* Ajusta la posición del botón izquierdo */
+    }
+
+    .nav-button.next {
+        right: -0.5rem; /* Ajusta la posición del botón derecho */
+    }
+}

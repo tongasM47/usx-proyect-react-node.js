@@ -1,0 +1,44 @@
+/* Wrapper del banner */
+.banner-wrapper {
+    width: 100%; /* Asegurar que ocupe todo el ancho */
+    display: flex; /* Para centrar el contenido si es necesario */
+    justify-content: center;
+    margin-bottom: 2rem; /* Separación con el contenido inferior */
+}
+
+/* Estilos del banner */
+.banner {
+    background: linear-gradient(135deg, var(--primary-green), var(--secondary-green)); /* Fondo degradado */
+    color: white; /* Texto blanco */
+    padding: 4rem 2rem; /* Espaciado interno */
+    text-align: center; /* Centrar contenido */
+    border-radius: 10px; /* Bordes redondeados */
+    width: 100%; /* Asegurar que ocupe todo el espacio del wrapper */
+    max-width: 1200px; /* Limitar el ancho máximo */
+}
+
+.banner-content h1 {
+    font-size: 2.5rem; /* Tamaño del título */
+    margin-bottom: 1rem; /* Espaciado con el subtítulo */
+}
+
+.banner-content p {
+    font-size: 1.2rem; /* Subtítulo */
+    margin-bottom: 2rem; /* Espaciado con el botón */
+}
+
+.banner-button {
+    background-color: white; /* Fondo del botón */
+    color: var(--primary-green); /* Texto verde */
+    padding: 0.8rem 1.5rem; /* Espaciado interno */
+    font-size: 1rem; /* Tamaño del texto */
+    border: none; /* Sin bordes */
+    border-radius: 5px; /* Bordes redondeados */
+    cursor: pointer; /* Cambiar a cursor de mano */
+    transition: background-color 0.3s, color 0.3s; /* Transición suave */
+}
+
+.banner-button:hover {
+    background-color: var(--secondary-green); /* Fondo al pasar el mouse */
+    color: white; /* Texto blanco */
+}

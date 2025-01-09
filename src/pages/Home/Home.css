@@ -1,0 +1,73 @@
+/* Asegurar que el footer esté siempre al final de la página */
+.home {
+    display: flex; /* Activar flexbox */
+    flex-direction: column; /* Apilar elementos en columnas */
+    min-height: 100vh; /* Altura mínima igual a la altura de la ventana */
+}
+
+.home-content {
+    flex: 1; /* Hacer que el contenido ocupe el espacio disponible */
+}
+
+/* Banner */
+.home-banner {
+    text-align: center;
+    background-color: var(--primary-green); /* Fondo verde */
+    color: white; /* Texto blanco */
+    padding: 2rem;
+    border-radius: 10px; /* Bordes redondeados */
+    margin-bottom: 2rem;
+}
+
+.home-banner h1 {
+    font-size: 2.5rem; /* Título grande */
+    margin-bottom: 0.5rem;
+}
+
+.home-banner p {
+    font-size: 1.2rem;
+}
+
+/* Productos destacados */
+.home-featured {
+    text-align: center;
+    max-width: 1200px; /* Ancho máximo del Header */
+    margin: 0 auto; /* Centrado horizontal */
+    flex-wrap: wrap; /* Permite que los elementos se ajusten en pantallas pequeñas */
+}
+
+.home-featured h2 {
+    font-size: 2rem;
+    margin-bottom: 1rem;
+}
+
+/* Grid de productos */
+.featured-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); /* Adaptativo */
+    gap: 1.5rem; /* Espaciado entre tarjetas */
+}
+
+.product-card {
+    background-color: white; /* Fondo blanco */
+    border: 1px solid var(--primary-green); /* Borde verde */
+    border-radius: 5px; /* Bordes redondeados */
+    padding: 1rem;
+    text-align: center;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Sombra ligera */
+    transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.product-card:hover {
+    transform: translateY(-5px); /* Efecto de elevación */
+    box-shadow: 0 8px 10px rgba(0, 0, 0, 0.15); /* Sombra más marcada */
+}
+
+/* Imágenes en las tarjetas de productos */
+.product-image {
+    width: 100%; /* Imagen ocupa todo el ancho */
+    height: 150px; /* Altura fija */
+    object-fit: cover; /* Ajuste sin deformar */
+    border-radius: 5px; /* Bordes redondeados */
+    margin-bottom: 1rem; /* Separación con el texto */
+}

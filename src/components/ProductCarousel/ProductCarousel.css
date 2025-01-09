@@ -1,0 +1,106 @@
+.product-carousel {
+    display: flex; /* Configura un contenedor flex para alinear elementos */
+    align-items: center; /* Alinea verticalmente los elementos al centro */
+    justify-content: center; /* Centra los elementos horizontalmente */
+    margin: 0 auto; /* Centra el carrusel horizontalmente */
+    position: relative; /* Necesario para posicionar los botones de navegación */
+    padding: 0 2.5rem; /* Espaciado interno para evitar cortes con los botones */
+    background-color: var(--background-green); /* Fondo del carrusel con color verde claro */
+    border-radius: 10px; /* Bordes redondeados del carrusel */
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Sombra para dar efecto de profundidad */
+    overflow: hidden; /* Oculta contenido que exceda los bordes del carrusel */
+    max-height: 1000px; /* Limita la altura máxima del carrusel */
+    max-width: 1200px; /* Limita el ancho máximo del carrusel */
+}
+
+.product-list {
+    display: flex; /* Configura un contenedor flex para los productos */
+    gap: 1rem; /* Espaciado entre los productos */
+    overflow: hidden; /* Oculta los productos que están fuera de la vista */
+    width: 100%; /* Ocupa todo el ancho disponible */
+    transition: transform 0.5s ease-in-out; /* Animación suave al mover los productos */
+    padding: 0 3rem; /* Asegura espacio interno para que no se corten los productos */
+}
+
+.nav-button {
+    background-color: var(--primary-green); /* Fondo verde principal */
+    color: white; /* Color del icono o texto del botón */
+    border: none; /* Sin bordes adicionales */
+    padding: 1rem; /* Espaciado interno del botón */
+    border-radius: 50%; /* Hace el botón perfectamente circular */
+    cursor: pointer; /* Cambia el cursor a mano al pasar sobre el botón */
+    transition: background-color 0.3s, transform 0.3s; /* Suaviza los cambios de color y escala */
+    position: relative; /* Posiciona el botón en relación al carrusel */
+    top: 50%; /* Centra verticalmente el botón */
+    transform: translateY(0%); /* Ajusta el botón exactamente al centro */
+    z-index: 2; /* Asegura que el botón esté encima de otros elementos */
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2); /* Sombra para dar efecto de profundidad */
+    align-items: center; /* Centra verticalmente el contenido */
+}
+
+.nav-button.prev {
+    left: -2rem; /* Posiciona el botón izquierdo fuera del carrusel */
+}
+
+.nav-button.next {
+    right: -2rem; /* Posiciona el botón derecho fuera del carrusel */
+}
+
+.nav-button:hover {
+    background-color: var(--secondary-green); /* Cambia el color del botón al verde claro al pasar el cursor */
+    transform: scale(1.1); /* Aumenta ligeramente el tamaño del botón */
+}
+
+.product-item {
+    flex: 0 0 auto; /* Asegura que los elementos no se redimensionen */
+    width: 150px; /* Define un ancho fijo para cada producto */
+    background-color: var(--white); /* Fondo blanco para los productos */
+    border-radius: 8px; /* Bordes redondeados para los productos */
+    overflow: hidden; /* Oculta contenido que exceda los bordes del producto */
+    text-align: center; /* Centra el contenido dentro del producto */
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Sombra para efecto de profundidad */
+    transition: transform 0.3s, box-shadow 0.3s; /* Animación suave al pasar el cursor */
+}
+
+.product-item img {
+    width: 100%; /* La imagen ocupa todo el ancho del contenedor */
+    height: 100px; /* Altura fija para las imágenes */
+    object-fit: cover; /* Asegura que la imagen cubra sin distorsionarse */
+}
+
+/* Responsividad */
+@media (max-width: 768px) {
+    .product-list {
+        gap: 0.5rem; /* Reduce el espaciado entre productos en pantallas medianas */
+    }
+
+    .nav-button {
+        padding: 0.8rem; /* Botones más pequeños para pantallas medianas */
+    }
+
+    .nav-button.prev {
+        left: -1rem; /* Ajusta la posición del botón izquierdo */
+    }
+
+    .nav-button.next {
+        right: -1rem; /* Ajusta la posición del botón derecho */
+    }
+}
+
+@media (max-width: 480px) {
+    .product-list {
+        gap: 0.3rem; /* Reduce aún más el espaciado entre productos */
+    }
+
+    .nav-button {
+        padding: 0.6rem; /* Botones aún más pequeños para pantallas pequeñas */
+    }
+
+    .nav-button.prev {
+        left: -0.5rem; /* Ajusta la posición del botón izquierdo */
+    }
+
+    .nav-button.next {
+        right: -0.5rem; /* Ajusta la posición del botón derecho */
+    }
+}

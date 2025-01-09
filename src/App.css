@@ -1,0 +1,49 @@
+/* Configuración para sticky footer */
+.App {
+  display: flex; /* Activar flexbox */
+  flex-direction: column; /* Apilar elementos verticalmente */
+  min-height: 100vh; /* Asegurar que el contenedor ocupe toda la altura de la ventana */
+  text-align: center; /* Centrar texto */
+}
+
+.App-logo {
+  height: 40vmin;
+  pointer-events: none;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .App-logo {
+      animation: App-logo-spin infinite 20s linear;
+  }
+}
+
+/* Encabezado */
+.App-header {
+  background-color: #282c34;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  font-size: calc(10px + 2vmin);
+  color: white;
+}
+
+/* Contenedor principal para las rutas */
+.main-content {
+  flex: 1; /* Permitir que este contenedor crezca para ocupar el espacio restante */
+}
+
+/* Enlace */
+.App-link {
+  color: #61dafb;
+}
+
+/* Animación */
+@keyframes App-logo-spin {
+  from {
+      transform: rotate(0deg);
+  }
+  to {
+      transform: rotate(360deg);
+  }
+}
