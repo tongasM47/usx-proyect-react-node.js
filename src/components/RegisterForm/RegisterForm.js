@@ -1,9 +1,9 @@
 import React, { useState } from 'react';
-import { useNavigate } from 'react-router-dom'; // Importar useNavigate
+import { useNavigate } from 'react-router-dom';
 import './RegisterForm.css';
 
 const RegisterForm = () => {
-    const navigate = useNavigate(); // Crear instancia de useNavigate
+    const navigate = useNavigate();
     const [formData, setFormData] = useState({
         firstName: '',
         lastName: '',
@@ -13,15 +13,13 @@ const RegisterForm = () => {
     });
 
     const [errors, setErrors] = useState({});
-    const [message, setMessage] = useState(''); // Estado para manejar mensajes del backend
+    const [message, setMessage] = useState('');
 
-    // Manejar cambios en los inputs
     const handleChange = (e) => {
         const { name, value } = e.target;
         setFormData({ ...formData, [name]: value });
     };
 
-    // Validación simple de los campos
     const validate = () => {
         const newErrors = {};
 
@@ -41,7 +39,6 @@ const RegisterForm = () => {
         return Object.keys(newErrors).length === 0;
     };
 
-    // Manejar el envío del formulario
     const handleSubmit = async (e) => {
         e.preventDefault();
         if (validate()) {
@@ -63,8 +60,8 @@ const RegisterForm = () => {
                 if (response.ok) {
                     setMessage('Registro exitoso. Redirigiendo al inicio de sesión...');
                     setTimeout(() => {
-                        navigate('/login'); // Redirigir al login después de 2 segundos
-                    }, 2000); // Retraso opcional para mostrar el mensaje
+                        navigate('/login');
+                    }, 2000);
                 } else {
                     setMessage(data.message || 'Error al registrar el usuario.');
                 }
@@ -77,7 +74,7 @@ const RegisterForm = () => {
     return (
         <form className="register-form" onSubmit={handleSubmit}>
             <h2>Registro</h2>
-            {message && <p className="message">{message}</p>} {/* Mostrar mensaje del backend */}
+            {message && <p className="message">{message}</p>}
             <div className="form-group">
                 <label>Nombre</label>
                 <input

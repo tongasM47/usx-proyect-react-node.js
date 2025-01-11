@@ -6,26 +6,25 @@ const registerUser = async (req, res) => {
     const { name, email, password } = req.body;
 
     try {
+        // Verificar si el usuario ya existe
         const userExists = await User.findOne({ email });
-
         if (userExists) {
             return res.status(400).json({ message: 'El usuario ya existe' });
         }
 
+        // Crear el usuario con datos cifrados
         const user = await User.create({ name, email, password });
 
-        if (user) {
-            res.status(201).json({
-                _id: user._id,
-                name: user.name,
-                email: user.email,
-                token: generateToken(user._id),
-            });
-        } else {
-            res.status(400).json({ message: 'Datos inválidos para el usuario' });
-        }
+        // Responder con éxito
+        res.status(201).json({
+            _id: user._id,
+            name: user.name,
+            email: user.email,
+            token: generateToken(user._id),
+        });
     } catch (error) {
-        res.status(500).json({ message: 'Error al registrar el usuario', error });
+        console.error('Error al registrar el usuario:', error);
+        res.status(500).json({ message: 'Error al registrar el usuario' });
     }
 };
 
