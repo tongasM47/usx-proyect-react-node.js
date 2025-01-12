@@ -5,12 +5,11 @@ const connectDB = async () => {
         const conn = await mongoose.connect(process.env.MONGO_URI, {
             useNewUrlParser: true,
             useUnifiedTopology: true,
-            maxMessageSizeBytes: 16777216, // Aumenta el tamaño máximo a 16 MB
         });
         console.log(`✅ MongoDB conectado: ${conn.connection.host}`);
     } catch (error) {
         console.error(`❌ Error al conectar a MongoDB: ${error.message}`);
-        process.exit(1);
+        process.exit(1); // Finaliza el proceso si hay un error
     }
 };
 

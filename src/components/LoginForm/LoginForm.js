@@ -1,48 +1,52 @@
 import React, { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 import './LoginForm.css';
 
 const LoginForm = () => {
-    // Estado local para manejar los datos del formulario
+    const navigate = useNavigate();
     const [formData, setFormData] = useState({
         email: '',
         password: '',
     });
 
-    const [errors, setErrors] = useState({});
+    const [message, setMessage] = useState(''); // Para mensajes de error o éxito
 
-    // Manejar cambios en los inputs
     const handleChange = (e) => {
         const { name, value } = e.target;
         setFormData({ ...formData, [name]: value });
     };
 
-    // Validación de campos
-    const validate = () => {
-        const newErrors = {};
-
-        if (!formData.email.trim() || !/\S+@\S+\.\S+/.test(formData.email)) {
-            newErrors.email = 'El email es inválido.';
-        }
-        if (formData.password.length < 6) {
-            newErrors.password = 'La contraseña debe tener al menos 6 caracteres.';
-        }
-
-        setErrors(newErrors);
-        return Object.keys(newErrors).length === 0;
-    };
-
-    // Manejar envío del formulario
-    const handleSubmit = (e) => {
+    const handleSubmit = async (e) => {
         e.preventDefault();
-        if (validate()) {
-            console.log('Datos enviados:', formData);
-            // Aquí se conectará con el backend más adelante
+        try {
+            const response = await fetch('http://localhost:5000/api/users/login', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify(formData),
+            });
+
+            const data = await response.json();
+
+            if (response.ok) {
+                setMessage('Inicio de sesión exitoso. Redirigiendo...');
+                localStorage.setItem('userInfo', JSON.stringify(data)); // Guardar en localStorage
+                setTimeout(() => {
+                    navigate('/'); // Redirigir a la página principal
+                }, 2000);
+            } else {
+                setMessage(data.message || 'Error al iniciar sesión.');
+            }
+        } catch (error) {
+            setMessage('Error al conectar con el servidor.');
         }
     };
 
     return (
         <form className="login-form" onSubmit={handleSubmit}>
             <h2>Iniciar Sesión</h2>
+            {message && <p className="message">{message}</p>}
             <div className="form-group">
                 <label>Email</label>
                 <input
@@ -51,7 +55,6 @@ const LoginForm = () => {
                     value={formData.email}
                     onChange={handleChange}
                 />
-                {errors.email && <span className="error">{errors.email}</span>}
             </div>
             <div className="form-group">
                 <label>Contraseña</label>
@@ -61,7 +64,6 @@ const LoginForm = () => {
                     value={formData.password}
                     onChange={handleChange}
                 />
-                {errors.password && <span className="error">{errors.password}</span>}
             </div>
             <button type="submit">Iniciar Sesión</button>
         </form>

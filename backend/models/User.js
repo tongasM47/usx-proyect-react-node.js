@@ -1,15 +1,18 @@
 const mongoose = require('mongoose');
 const bcrypt = require('bcryptjs');
 
-const userSchema = new mongoose.Schema({
-    name: { type: String, required: true }, // Nombre del usuario
-    email: { type: String, required: true, unique: true }, // Correo electrónico único
-    password: { type: String, required: true }, // Contraseña encriptada
-}, {
-    timestamps: true, // Agrega campos de `createdAt` y `updatedAt`
-});
+const userSchema = new mongoose.Schema(
+    {
+        name: { type: String, required: true },
+        email: { type: String, required: true, unique: true },
+        password: { type: String, required: true },
+    },
+    {
+        timestamps: true, // Agregar createdAt y updatedAt
+    }
+);
 
-// Middleware para encriptar contraseñas antes de guardar
+// Cifrar contraseñas antes de guardar
 userSchema.pre('save', async function (next) {
     if (!this.isModified('password')) {
         next();

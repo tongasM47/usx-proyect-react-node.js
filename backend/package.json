@@ -12,7 +12,7 @@
         "dotenv": "^8.6.0",
         "express": "^4.17.1",
         "jsonwebtoken": "^9.0.2",
-        "mongoose": "^8.9.3"
+        "mongoose": "^8.9.4"
     },
     "author": "Tu Nombre",
     "license": "ISC"
